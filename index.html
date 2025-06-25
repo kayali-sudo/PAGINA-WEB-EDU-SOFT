@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduSoft Bolivia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Nuevas fuentes Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-primary: #2ecc71;
+      --green-dark: #27ae60;
+      --green-light: #a3e4d7;
+      --orange-accent: #f39c12;
+      --yellow-accent: #f1c40f;
+      --blue-accent: #3498db;
+      --text-dark: #2c3e50;
+      --text-light: #ecf0f1;
+    }
+    
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f9f9f9;
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6,
+    .navbar-brand,
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, var(--green-primary), var(--blue-accent));
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .navbar-brand {
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-link {
+      font-weight: 600;
+      position: relative;
+      margin: 0 8px;
+      transition: all 0.3s ease-out;
+    }
+    
+    .nav-link:hover {
+      color: var(--yellow-accent) !important;
+      transform: translateY(-3px);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--yellow-accent);
+      transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    
+    /* Efecto "floating" para las cards */
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      margin-bottom: 30px;
+      background: white;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .card:hover {
+      transform: translateY(-15px) scale(1.03) !important;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card:nth-child(1) { animation-delay: 0s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    
+    /* Títulos con subrayado animado */
+    h2 {
+      color: var(--green-dark);
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green-primary), var(--orange-accent));
+      border-radius: 3px;
+      transition: width 0.5s;
+    }
+    
+    h2:hover:after {
+      width: 120px;
+    }
+    
+    /* Footer con efecto "wave" */
+    footer {
+      background: linear-gradient(135deg, var(--green-dark), #1e8449);
+      color: white;
+      padding: 60px 0 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer:before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23f9f9f9" opacity=".25"/></svg>');
+      background-size: cover;
+    }
+    
+    /* Efecto "neon" para futuros botones */
+    .btn-neon {
+      background: transparent;
+      color: var(--green-primary);
+      border: 2px solid var(--green-primary);
+      border-radius: 50px;
+      padding: 10px 25px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+    }
+    
+    .btn-neon:hover {
+      background: var(--green-primary);
+      color: white;
+      box-shadow: 0 0 20px rgba(46, 204, 113, 0.8);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">EduSoft Bolivia</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="multimedia.html">Multimedia</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="#herramientas">Herramientas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#guias">Guías</a></li>
+        <li class="nav-item"><a class="nav-link" href="#instituciones">Instituciones</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Carrusel compacto con frase inspiradora -->
+<div class="container-fluid position-relative px-0 mb-4">
+  <!-- Frase superpuesta -->
+  <div class="position-absolute top-20 start-10 z-index-2 text-white p-3" style="text-shadow: 2px 2px 4px #000;">
+    <h2 class="fw-bold">"Innovación educativa a través del software"</h2>
+  </div>
+  <!-- Carrusel -->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="max-height: 350px; overflow: hidden;">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/img/slider/slider2.png" class="d-block w-100" alt="Tecnología educativa 1" style="object-fit: cover; height: 350px;">
+      </div>
+      <div class="carousel-item">
+        <img src="img/slider/slider3.png" class="d-block w-100" alt="Tecnología educativa 2" style="object-fit: cover; height: 350px;">
+      </div>
+      <div class="carousel-item">
+        <img src="img/slider/slider1.png" class="d-block w-100" alt="Tecnología educativa 3" style="object-fit: cover; height: 350px;">
+      </div>
+    </div>
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+
+<!-- Bienvenida -->
+<section class="container my-5" id="inicio">
+  <h2 class="text-center">Bienvenida</h2>
+  <p class="text-center">Ofrecer información clara, práctica y confiable sobre software educativo para estudiantes, docentes, instituciones y público en general.</p>
+</section>
+
+<!-- Cards con info clave -->
+<section class="container my-5" id="herramientas">
+  <div class="row g-4">
+    <!-- Card 1: Últimas Noticias -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="img/card/IMG_20250617_093504.jpg" class="card-img-top" alt="Portada de noticias sobre educación tecnológica">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Últimas Noticias</h5>
+          <p class="card-text">Mantente informado sobre el software educativo.</p>
+          <a href="https://www.edtick.com/es/news" class="btn btn-primary mt-auto" target="_blank">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Videos en Tendencia -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Videos en Tendencia</h5>
+          <p class="card-text">Las 6 tendencias educativas del Futuro</p>
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://www.youtube.com/embed/m-pzbJdbGdA" 
+                    title="Tendencias educativas en YouTube" 
+                    allowfullscreen></iframe>
+          </div>
+          <a href="https://www.youtube.com/watch?v=m-pzbJdbGdA" class="btn btn-danger mt-auto" target="_blank">
+            Ver en YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Nuestra Comunidad -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <img src="img/card/comunidad.png" class="card-img-top" alt="Comunidad de aprendizaje colaborativo">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Nuestra Comunidad</h5>
+          <p class="card-text">¡Únete a nosotros!</p>
+          <button class="btn btn-success mt-auto">Registrarse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Beneficios -->
+<section class="container my-5">
+  <h2>Beneficios por grupo</h2>
+  <p>Explora cómo el software educativo aporta a estudiantes, docentes e instituciones.</p>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-4">
+  <div class="container">
+    <div class="social-icons mb-4">
+      <a href="#" class="text-light mx-3" style="font-size: 1.8rem;">📘</a>
+      <a href="#" class="text-light mx-3" style="font-size: 1.8rem;">📱</a>
+      <a href="#" class="text-light mx-3" style="font-size: 1.8rem;">📸</a>
+      <a href="#" class="text-light mx-3" style="font-size: 1.8rem;">🎵</a>
+    </div>
+    <p class="mb-3">Acerca de | Contacto | Términos | Créditos</p>
+    <p>EduSoft Bolivia © 2025 - Sitio Educativo sin fines de lucro</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
